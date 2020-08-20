@@ -1,0 +1,35 @@
+{% extends 'src.html' %}
+{% block head %}
+    <title>Vineeth Sudoku Board</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+      <h1>A Vineeth Game</h1>
+      <form name="passdata" action="/table" method="post">
+      <table id="grid">
+        {% for i in range(9) %}
+          <tr>
+          {% for j in range(9)%}
+            {% if ques[i][j]==0 %}
+                <td><input name="{{i}}{{j}}" id="cell-{{(i*9)+j}}"  type="text"></td>
+            {% else %}
+                <td><input id="cell-{{(i*9)+j}}"  type="text" value="{{ques[i][j]}}" disabled></td>
+            {% endif %}
+          {% endfor %}
+          </tr>
+        {% endfor %}
+          </table>
+            <br><br>
+      <button type="submit" value="submit">Submit</button><br><br>
+
+      </form>
+
+    <form name="passdata" action="/answer" method="post">
+
+        <button type="submit" value="submit">Answer</button>
+
+    </form>
+
+    </div>
+{% endblock %}

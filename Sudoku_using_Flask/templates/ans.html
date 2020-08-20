@@ -1,0 +1,23 @@
+{% extends 'src.html' %}
+{% block head %}
+    <title>Answer</title>
+{% endblock %}
+{% block body %}
+<div class="container">
+      <h1>Answer</h1>
+      <form name="passdata" action="/restart" method="post">
+      <table id="grid">
+        {% for i in range(9) %}
+          <tr>
+          {% for j in range(9)%}
+                <td><input id="cell-{{(i*9)+j}}"  type="text" value="{{ques[i][j]}}" disabled></td>
+          {% endfor %}
+          </tr>
+        {% endfor %}
+          </table>
+            <br><br>
+      <button type="submit" value="restart">Restart</button><br><br>
+
+      </form>
+</div>
+{% endblock %}
