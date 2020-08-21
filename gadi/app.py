@@ -1,10 +1,7 @@
 import webbrowser
 from flask import Flask,render_template
-from ptable import petrol_price
-from dtable import diesel_price
-
+from dieselandpetrolprice import price
 app = Flask(__name__)
-diesel_price()
 petrol_price()
 @app.route('/')
 @app.route('/home')
@@ -33,13 +30,14 @@ def contact():
 
 @app.route('/petrolprice')
 def petrolprice():
-    return render_template('petrolprice.html')
+    fg=price(wiki = "https://www.sify.com/finance/today-petrol-price/")
+    return render_template('dieselpetrolprice.html',fuelcamelcase='Petrol',fuel='PETROL',today=fg[0],n=fg[1],A=fg[2],B=fg[3],C=fg[4],D=fg[5])
 
 
 @app.route('/dieselprice')
 def dieselprice():
-    return render_template('dieselprice.html')
-
+    fg=price(wiki = "https://www.sify.com/finance/today-diesel-price/")
+    return render_template('dieselpetrolprice.html',fuelcamelcase='Diesel',fuel='DIESEL',today=fg[0],n=fg[1],A=fg[2],B=fg[3],C=fg[4],D=fg[5])
 if __name__ == '__main__':
     app.run(debug=True,port=2323)
 
