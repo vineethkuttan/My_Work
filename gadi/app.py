@@ -2,7 +2,6 @@ import webbrowser
 from flask import Flask,render_template
 from dieselandpetrolprice import price
 app = Flask(__name__)
-petrol_price()
 @app.route('/')
 @app.route('/home')
 def home():   
