@@ -5,7 +5,6 @@ def price(wiki):
     today = date.today()
     page = urllib.request.urlopen(wiki)
     soup = BeautifulSoup(page,features="lxml")
-    all_tables=soup.find_all('table')
     right_table=soup.find('table')
     A=[]
     B=[]
